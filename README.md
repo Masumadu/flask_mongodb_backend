@@ -1,6 +1,6 @@
 <div align="center">
-  <h1><b>FLASK POSTGRES BACKEND APPLICATION</b></h1>
-  <h4>A Design Template For Building Enterprise Level Backend Applications Using Flask And Postgres</h4>
+  <h1><b>FLASK MONGODB BACKEND APPLICATION</b></h1>
+  <h4>A Design Template For Building Enterprise Level Backend Applications Using Flask And Mongodb</h4>
 </div>
 
 ## 📗 Table of Contents
@@ -17,8 +17,8 @@
       - Docker
       - Docker Compose
       - [🔥 Tech Stack](#tech-stack)
-        - FastApi
-        - Postgres
+        - Flask
+        - Mongodb
         - Redis
       - [🔑 Key Features](#key-features)
         - Factory Design Pattern
@@ -36,7 +36,7 @@
     - python3
     - python3-venv
     - poetry
-    - postgres
+    - mongodb
     - redis
     - docker
     - docker-compose
