@@ -58,7 +58,6 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     DEVELOPMENT = True
-    SQL_DB_HOST = os.getenv("DB_HOST", default="localhost")
     LOG_BACKTRACE = True
     LOG_LEVEL = "DEBUG"
 
@@ -66,7 +65,6 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     DEVELOPMENT = False
-    SQL_DB_HOST = os.getenv("DB_HOST")
     LOG_BACKTRACE = False
     LOG_LEVEL = "INFO"
 
@@ -74,7 +72,7 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
-    DEVELOPMENT = True
+    DEVELOPMENT = False
     LOG_BACKTRACE = True
     LOG_LEVEL = "DEBUG"
 
