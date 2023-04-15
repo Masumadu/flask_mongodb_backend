@@ -66,7 +66,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: masumadu/flask_mongodb_backend
+          images: masumadu/$${{ secrets.DOCKER_REPOSITORY_NAME }}
           tags: |
             type=ref,event=branch
             type=sha,prefix={{branch}}-
