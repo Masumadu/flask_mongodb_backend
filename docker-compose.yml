@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   backend:
-    build: .
+    image: flask_mongodb_backend:latest
     container_name: "flask-mongodb-backend"
     environment:
       FLASK_DEBUG: ${FLASK_DEBUG}
@@ -31,21 +31,21 @@ services:
           condition: service_healthy
 
   backend_db:
-    image: mongo:latest
-    container_name: "mongodb-database"
+    image: mongo:6.0.5
+    container_name: "mongodb-server"
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
       MONGO_INITDB_DATABASE: ${DB_NAME}
     volumes:
-      - $PWD/.dbdata:/data/db
+      - $PWD/.ignore_mongodb_data:/data/db
     ports:
       - "27018:27017"
     networks:
       - flask_service
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
 
   redis:
     image: redis:6.2.6-alpine

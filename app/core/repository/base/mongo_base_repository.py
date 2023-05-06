@@ -57,7 +57,9 @@ class MongoBaseRepository(CRUDRepositoryInterface):
             db_obj.delete()
             return True
         except mongoengine.DoesNotExist:
-            raise AppException.NotFoundException(error_message="document does not exist")
+            raise AppException.NotFoundException(
+                error_message="document does not exist"
+            )
         except mongoengine.OperationError:
             raise AppException.OperationError(error_message="error deleting document")
         except ServerSelectionTimeoutError as e:
@@ -69,7 +71,9 @@ class MongoBaseRepository(CRUDRepositoryInterface):
             db_obj.delete()
             return True
         except mongoengine.DoesNotExist:
-            raise AppException.NotFoundException(error_message="document does not exist")
+            raise AppException.NotFoundException(
+                error_message="document does not exist"
+            )
         except mongoengine.OperationError:
             raise AppException.OperationError(error_message="error deleting document")
         except ServerSelectionTimeoutError as e:

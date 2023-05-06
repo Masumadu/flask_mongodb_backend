@@ -1,9 +1,9 @@
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
+from mongoengine import Document
 
 
 class Seeder:
-    db: SQLAlchemy().Model
+    db: Document
     fake: Faker
 
     @classmethod

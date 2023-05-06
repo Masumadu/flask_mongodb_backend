@@ -32,14 +32,14 @@ class AppExceptionCase(Exception):
 def app_exception_handler(exc):
     if isinstance(exc, PyMongoError):
         return Response(
-            json.dumps(
-                {"app_exception": "Database Error", "errorMessage": exc._message}
-            ),
+            json.dumps({"app_exception": "Database Error", "errorMessage": exc.args}),
             status=400,
         )
     if isinstance(exc, HTTPException):
         return Response(
-            json.dumps({"app_exception": "HTTP Error", "errorMessage": exc.description}),
+            json.dumps(
+                {"app_exception": "HTTP Error", "errorMessage": exc.description}
+            ),
             status=exc.code,
         )
     return Response(

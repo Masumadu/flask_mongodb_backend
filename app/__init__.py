@@ -5,7 +5,7 @@ from logging.config import dictConfig
 from flask import Flask, jsonify, redirect
 from flask.logging import default_handler
 from flask_swagger_ui import get_swaggerui_blueprint
-from sqlalchemy.exc import DBAPIError
+from pymongo.errors import PyMongoError
 from werkzeug.exceptions import HTTPException
 from werkzeug.utils import import_string
 
@@ -18,7 +18,7 @@ sys.path.insert(
 from app.api_spec import spec
 from app.core.exceptions.app_exceptions import AppExceptionCase, app_exception_handler
 from app.core.extensions import cors, healthcheck, ma, me
-from app.core.log_config import log_config
+from app.core.log import log_config
 from app.health import HEALTH_CHECKS
 
 APP_ROOT = os.path.join(os.path.dirname(__file__), "..")  # refers to application_top
@@ -71,7 +71,7 @@ def register_extensions(flask_app):
     def handle_http_exception(e):
         return app_exception_handler(e)
 
-    @flask_app.errorhandler(DBAPIError)
+    @flask_app.errorhandler(PyMongoError)
     def handle_db_exception(e):
         return app_exception_handler(e)
 

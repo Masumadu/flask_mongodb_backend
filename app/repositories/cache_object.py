@@ -49,7 +49,9 @@ def cache_list_of_object(
     return obj_data
 
 
-def deserialize_cached_object(obj_data: str, obj_model: me.Document, obj_schema: Schema):
+def deserialize_cached_object(
+    obj_data: str, obj_model: me.Document, obj_schema: Schema
+):
     """
     This function takes a cache object, typecast it to a model object
     :param obj_data: {str} object to deserialize

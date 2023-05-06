@@ -41,7 +41,6 @@ htmlcov/
 .tox/
 .nox/
 .coverage
-.coveragerc
 .coverage.*
 .cache
 nosetests.xml
@@ -156,13 +155,9 @@ keycloak_public_key.pub
 .dbdata
 .keycloakdata
 
-# ignore docker compose dev file
-docker-compose-dev.yml
-
 # ignore sonarqube files
 .scannerwork
 sonar-project.properties
-sonar.sh
-kafka_config
-# locust test files
-locust_test_file.py
+
+# ignore files with this naming pattern
+ignore*
